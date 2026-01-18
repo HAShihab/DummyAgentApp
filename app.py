@@ -45,7 +45,7 @@ def chat():
                 {"role": "user", "content": user_input}
             ]
         )
-
+        print(response)
         # Extract the assistant's reply
         answer = response.choices[0].message.content
         return jsonify({"reply": answer})
