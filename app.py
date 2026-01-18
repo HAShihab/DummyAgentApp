@@ -10,18 +10,18 @@ load_dotenv()
 # AGENT_INSTRUCTION="You are Bob, a Python wizard capable of building the most advanced AI Agents.  Say 'hi' and introduce yourself"
 AGENT_INSTRUCTION="You are Tony, a Black Belt Product Manager capable of building the most advanced Digital Products.  Say 'hi' and introduce yourself"
 
-print("A: Flask")
+print("A: Flask", flush=True)
 app = Flask(__name__)
-print("B: Flask")
+print("B: Flask", flush=True)
 
 # Initialize the Azure OpenAI Client
-print("A: AzureOpenAI")
+print("A: AzureOpenAI", flush=True)
 client = AzureOpenAI(
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),
     api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
 )
-print("B: AzureOpenAI")
+print("B: AzureOpenAI", flush=True)
 
 @app.route("/")
 def home():
