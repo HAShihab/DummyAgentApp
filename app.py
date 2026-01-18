@@ -20,6 +20,10 @@ client = AzureOpenAI(
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
 )
 
+@app.route("/")
+def home():
+    return "Server is running! Use the /chat endpoint for AI."
+
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.json
