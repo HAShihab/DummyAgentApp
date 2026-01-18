@@ -29,9 +29,10 @@ def home():
 
 @app.route("/chat", methods=["POST"])
 def chat():
-    data = request.json
+    data = request.get_json()
+    print(data)
     user_input = data.get("message", "")
-
+    print(user_input)
     if not user_input:
         return jsonify({"error": "No message provided"}), 400
 
@@ -40,7 +41,7 @@ def chat():
         response = client.chat.completions.create(
             model=os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME"),
             messages=[
-                {"role": "system", "content": os.getenv("AGENT_INSTRUCTION")},
+                {"role": "system", "content": AGENT_INSTRUCTION},
                 {"role": "user", "content": user_input}
             ]
         )
